@@ -9,6 +9,10 @@ def game_on():
     solved = False
     answer = random.randrange(1,11)
     guesses = 1
+    if len(scores) == 1:
+        print("No current high score.")
+    else:
+        print(f"The high score is {min(scores)}, good luck!!")
     while solved == False:
         try:
             guess = int(input("Guess a number between 1 and 10.\n"))
@@ -32,7 +36,9 @@ def game_winner(guesses):
 
     high_score = min(scores)
     play_count = len(scores)
-    if high_score > guesses:
+    if high_score == 100000:
+        print(f"You won game {play_count} and set the high score of {guesses}!")
+    elif high_score > guesses:
         print(f"You won game {play_count} AND beat the old high score!!  New high score is {guesses} guesses.")
     elif high_score == guesses:
         print(f"You won game {play_count} AND tied the high score!! High score is {guesses} guesses.")
@@ -49,5 +55,6 @@ def game_winner(guesses):
             elif play_again.lower() == "n":
                 print("Thank you for playing!")
 
-
+print("Hello, and welcome to....\n")
+print("GUESS THAT NUMBER!!\n")
 game_on()
