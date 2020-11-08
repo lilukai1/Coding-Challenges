@@ -4,14 +4,16 @@ import random
 
 def game_on():
     solved = False
-    answer = random.randrange(1,10)
+    answer = random.randrange(1,11)
     guesses = 1
     while solved == False:
         try:
             guess = int(input("Guess a number between 1 and 10.\n"))
+            if guess > 10 or guess < 1:
+                raise 
         except:
             print("That's not a valid option!\n")
-
+            continue
         if guess > answer:
             print("Your guess was too high!")
             guesses += 1
